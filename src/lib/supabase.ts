@@ -307,7 +307,7 @@ export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
     return data.map((row, index) => ({
       id: row.id,
       userId: row.user_id,
-      playerName: row.player_name || 'کاربر واژل',
+      playerName: row.player_name || 'کاربر واژه‌چین',
       emailMasked: row.email_masked || 'پنهان',
       guessesCount: row.guesses_count,
       won: row.won,

@@ -69,7 +69,7 @@ export function ShareModal({
   );
 
   const attemptsText = won ? `${guesses.length}/6` : 'X/6';
-  const shareText = `واژل (Wordle فارسی) ${attemptsText} 🎯\n\n${emojiRows.join(
+  const shareText = `واژه‌چین (Wordle فارسی) ${attemptsText} 🎯\n\n${emojiRows.join(
     '\n'
   )}\n\nهمین حالا حدس بزن 👇\n${typeof window !== 'undefined' ? window.location.origin : 'https://wordle-farsi.vercel.app'}`;
 
@@ -99,7 +99,7 @@ export function ShareModal({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'واژل | Wordle فارسی',
+          title: 'واژه‌چین | Wordle فارسی',
           text: shareText,
         });
       } catch {
@@ -150,7 +150,7 @@ export function ShareModal({
 
       ctx.font = 'bold 72px sans-serif';
       ctx.fillStyle = '#ffffff';
-      ctx.fillText('واژل | Wordle فارسی', 540, 580);
+      ctx.fillText('واژه‌چین | Wordle فارسی', 540, 580);
 
       ctx.font = '40px sans-serif';
       ctx.fillStyle = '#94a3b8';
@@ -191,7 +191,7 @@ export function ShareModal({
       const dataUrl = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = dataUrl;
-      a.download = `vazhel-wordle-result-${Date.now()}.png`;
+      a.download = `vajehchin-wordle-result-${Date.now()}.png`;
       a.click();
     } catch (err) {
       console.warn('Canvas story generation error', err);
@@ -223,7 +223,7 @@ export function ShareModal({
         {/* Board Emoji Preview */}
         <div className="bg-slate-950/70 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 select-all font-mono text-xl tracking-widest text-center shadow-inner">
           <div className="text-xs text-slate-400 mb-1 font-sans">
-            واژل (Wordle فارسی) {attemptsText}
+            واژه‌چین (Wordle فارسی) {attemptsText}
           </div>
           {emojiRows.map((row, i) => (
             <div key={i}>{row}</div>

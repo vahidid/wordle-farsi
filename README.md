@@ -1,6 +1,6 @@
-# واژل (Wordle فارسی) 🎯
+# واژه‌چین (Wordle فارسی) 🎯
 
-پروژه مدرن بازی **وردل فارسی (Wordle Farsi)** پیاده‌سازی شده با **Next.js 16 (App Router)**، **TypeScript**، **Tailwind CSS v4**، دیتابیس و احراز هویت رایگان **Supabase** و آماده برای استقرار فوری در **Vercel**.
+پروژه مدرن بازی **واژه‌چین (Wordle فارسی)** پیاده‌سازی شده با **Next.js 16 (App Router)**، **TypeScript**، **Tailwind CSS v4**، دیتابیس و احراز هویت رایگان **Supabase** و آماده برای استقرار فوری در **Vercel**.
 
 ---
 

@@ -195,7 +195,7 @@ export function LeaderboardModal({
         <div className="flex items-center justify-between border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2">
             <Trophy className="w-6 h-6 text-amber-400" />
-            <h2 className="text-xl font-bold">جدول رده‌بندی واژل</h2>
+            <h2 className="text-xl font-bold">جدول رده‌بندی واژه‌چین</h2>
           </div>
           <button
             onClick={onClose}

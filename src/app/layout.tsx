@@ -30,9 +30,9 @@ const vazirmatn = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "واژل | Wordle فارسی - بازی حدس کلمات ۵ حرفی",
+  title: "واژه‌چین | Wordle فارسی - بازی حدس کلمات ۵ حرفی",
   description: "بازی حدس کلمات معنادار فارسی. با کیبورد فارسی کلمه را حدس بزنید، رتبه خود را در جدول رده‌بندی ثبت کنید و نتیجه را در اینستاگرام و توییتر به اشتراک بگذارید.",
-  keywords: ["wordle", "وردل", "واژل", "بازی کلمات", "کلمه بازی", "wordle فارسی"],
+  keywords: ["wordle", "وردل", "واژه‌چین", "بازی کلمات", "کلمه بازی", "wordle فارسی"],
 };
 
 export const viewport: Viewport = {

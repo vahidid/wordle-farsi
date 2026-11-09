@@ -1,5 +1,5 @@
 -- ==========================================
--- Wordle Farsi (واژل) - Supabase Database Schema
+-- Wordle Farsi (واژه‌چین) - Supabase Database Schema
 -- Run this script in the Supabase SQL Editor
 -- ==========================================
 

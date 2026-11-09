@@ -53,7 +53,7 @@ export function Header({
             و
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight bg-gradient-to-l from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">
-            واژل
+            واژه‌چین
           </h1>
           {gameWon && <Sparkles className="w-5 h-5 text-amber-400 animate-spin" />}
         </div>
