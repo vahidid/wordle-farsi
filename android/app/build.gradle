@@ -23,7 +23,7 @@ android {
             hostName: twaHost,
             defaultUrl: twaDefaultUrl,
             launcherName: "@string/app_name",
-            assetStatements: "[{\"relation\": [\"delegate_permission/common.handle_all_urls\"], \"target\": {\"namespace\": \"android_app\", \"package_name\": \"ir.wordlefarsi.twa\", \"sha256_cert_fingerprints\": [\"*\"]}}]"
+            assetStatements: "[{\"relation\": [\"delegate_permission/common.handle_all_urls\"], \"target\": {\"namespace\": \"web\", \"site\": \"https://${twaHost}\"}}]"
         ]
     }
 

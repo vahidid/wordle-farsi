@@ -241,7 +241,7 @@ export function ShareModal({
               <span className="text-slate-400">
                 {isLoggedIn
                   ? `وارد شده با: ${userEmail}`
-                  : 'کافیه ایمیلت رو با کد OTP تایید کنی.'}
+                  : 'کافیه ایمیلت رو تایید کنی.'}
               </span>
             </div>
           </div>
@@ -252,7 +252,7 @@ export function ShareModal({
             }}
             className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shrink-0 transition"
           >
-            {isLoggedIn ? 'جدول امتیازات' : 'تایید ایمیل'}
+            {isLoggedIn ? 'جدول امتیازات' : 'ورود به حساب'}
           </button>
         </div>
 

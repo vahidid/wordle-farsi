@@ -117,7 +117,7 @@ export function HowToPlayModal({ isOpen, onClose }: HowToPlayModalProps) {
             <span className="font-semibold text-slate-200">💡 نکته‌های مفید:</span>
             <span>• می‌توانید با کیبورد فیزیکی (فارسی یا انگلیسی) مستقیم تایپ کنید.</span>
             <span>• کلمات باید با معنی و ۵ حرفی باشند.</span>
-            <span>• با ثبت ایمیل و کد OTP می‌توانید رکوردتان را در رده‌بندی ثبت کنید!</span>
+            <span>• با ورود ایمیل می‌توانید رکوردتان را در جدول رده‌بندی ثبت کنید!</span>
           </div>
         </div>
 

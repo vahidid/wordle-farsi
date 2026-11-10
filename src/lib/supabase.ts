@@ -131,9 +131,11 @@ export async function verifyEmailOtp(
   token: string
 ): Promise<{ success: boolean; user?: User | { email: string; id: string }; error?: string }> {
   const client = getSupabase();
+  const cleanToken = token.trim();
+
   if (!client) {
-    // Offline simulation mode (accept any 6-digit code or '123456')
-    if (token.length >= 4) {
+    // Offline simulation mode (accept any 4+ digit code or '123456')
+    if (cleanToken.length >= 4) {
       const mockUser = {
         id: 'mock-user-' + Date.now(),
         email,
@@ -147,13 +149,26 @@ export async function verifyEmailOtp(
   }
 
   try {
-    const { data, error } = await client.auth.verifyOtp({
+    let { data, error } = await client.auth.verifyOtp({
       email,
-      token,
+      token: cleanToken,
       type: 'email',
     });
 
-    if (error || !data.user) {
+    // If type 'email' failed, fallback to 'signup' type in case Supabase treated this as a new registration
+    if ((error || !data?.user) && !error?.message?.toLowerCase().includes('expired')) {
+      const signupRes = await client.auth.verifyOtp({
+        email,
+        token: cleanToken,
+        type: 'signup',
+      });
+      if (!signupRes.error && signupRes.data?.user) {
+        data = signupRes.data;
+        error = null;
+      }
+    }
+
+    if (error || !data?.user) {
       return { success: false, error: error?.message || 'کد وارد شده معتبر نیست یا منقضی شده است' };
     }
 

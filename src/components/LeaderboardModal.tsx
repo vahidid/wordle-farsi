@@ -9,11 +9,9 @@ import {
   CheckCircle,
   AlertCircle,
   Clock,
-  ArrowRight,
   LogOut,
   Send,
   Sparkles,
-  Database,
 } from 'lucide-react';
 import {
   getLeaderboard,
@@ -102,8 +100,8 @@ export function LeaderboardModal({
         setOtpSent(true);
         setAuthMessage({
           text: isSupabaseConfigured
-            ? 'کد تایید ۶ رقمی به ایمیل شما ارسال شد'
-            : 'حالت دمو: هر کد ۴ یا ۶ رقمی (مثلاً 123456) را برای ورود آزمایشی وارد کنید',
+            ? 'کد تایید به ایمیل شما ارسال شد'
+            : 'کد تایید ارسال شد (کد تستی: 123456)',
           type: 'success',
         });
       } else {
@@ -205,24 +203,6 @@ export function LeaderboardModal({
           </button>
         </div>
 
-        {/* Supabase status badge */}
-        <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400">
-          <div className="flex items-center gap-1.5">
-            <Database className="w-3.5 h-3.5 text-slate-400" />
-            <span>پایگاه داده:</span>
-          </div>
-          {isSupabaseConfigured ? (
-            <span className="flex items-center gap-1 text-emerald-400 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              Supabase ابری فعال است
-            </span>
-          ) : (
-            <span className="text-amber-400 font-medium">
-              حالت دمو محلی (Supabase در انتظار پیکربندی)
-            </span>
-          )}
-        </div>
-
         {/* Tabs */}
         <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
           <button
@@ -243,7 +223,7 @@ export function LeaderboardModal({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            {user ? 'پروفایل و ثبت رکورد 👤' : 'ثبت نام با ایمیل (OTP) ✉️'}
+            {user ? 'پروفایل 👤' : 'ورود / ثبت‌نام ✉️'}
           </button>
         </div>
 
@@ -380,11 +360,11 @@ export function LeaderboardModal({
                 )}
               </div>
             ) : (
-              // User needs to sign in via OTP
+              // Sign in form
               <div className="flex flex-col gap-4">
-                <div className="p-3 bg-slate-800/40 border border-slate-700/60 rounded-xl text-xs text-slate-300 leading-relaxed">
-                  🔐 برای ثبت رکورد در جدول رده‌بندی ملی و اشتراک معتبر، کافی است ایمیل خود را وارد کرده تا کد یکبار مصرف (OTP) بدون رمز عبور برای شما ارسال شود.
-                </div>
+                <p className="text-xs text-slate-400 text-center">
+                  برای ورود به حساب و ثبت رکورد، ایمیل خود را وارد کنید.
+                </p>
 
                 {authMessage && (
                   <div
@@ -427,7 +407,7 @@ export function LeaderboardModal({
                       className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 transition active:scale-98 shadow-md shadow-emerald-950/50 cursor-pointer disabled:opacity-50"
                     >
                       <Send className="w-4 h-4" />
-                      <span>{authLoading ? 'در حال ارسال کد...' : 'ارسال کد یکبار مصرف (OTP)'}</span>
+                      <span>{authLoading ? 'در حال ارسال...' : 'ارسال کد ورود'}</span>
                     </button>
                   </form>
                 ) : (
@@ -435,7 +415,7 @@ export function LeaderboardModal({
                   <form onSubmit={handleVerifyOtp} className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <label className="text-xs text-slate-300 font-semibold">
-                        کد تایید ۶ رقمی ارسال شده به {emailInput}:
+                        کد تایید ارسال شده به {emailInput}:
                       </label>
                       <button
                         type="button"
@@ -467,7 +447,7 @@ export function LeaderboardModal({
                       className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 transition active:scale-98 shadow-md shadow-emerald-950/50 cursor-pointer disabled:opacity-50"
                     >
                       <CheckCircle className="w-4 h-4" />
-                      <span>{authLoading ? 'در حال تایید...' : 'تایید کد و ورود'}</span>
+                      <span>{authLoading ? 'در حال ورود...' : 'ورود'}</span>
                     </button>
                   </form>
                 )}

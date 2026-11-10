@@ -4,6 +4,23 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Required for Android 11 (API 30)+ Package Visibility -->
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,31 +46,35 @@
 
             <meta-data
                 android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
-                android:value="@color/statusBarColor" />
+                android:resource="@color/statusBarColor" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR_DARK"
-                android:value="@color/statusBarColorDark" />
+                android:resource="@color/statusBarColorDark" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
-                android:value="@color/navigationBarColor" />
+                android:resource="@color/navigationBarColor" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK"
-                android:value="@color/navigationBarColorDark" />
+                android:resource="@color/navigationBarColorDark" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
-                android:value="@drawable/splash_background" />
+                android:resource="@drawable/splash_background" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
-                android:value="@color/backgroundColor" />
+                android:resource="@color/backgroundColor" />
 
             <meta-data
                 android:name="android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION"
                 android:value="300" />
+
+            <meta-data
+                android:name="android.support.customtabs.trusted.FALLBACK_STRATEGY"
+                android:value="webview" />
 
             <!-- Main launcher intent -->
             <intent-filter>
@@ -72,6 +93,11 @@
                     android:pathPrefix="/" />
             </intent-filter>
         </activity>
+
+        <!-- WebView fallback for devices without Custom Tabs / Chrome -->
+        <activity
+            android:name="com.google.androidbrowserhelper.trusted.WebViewFallbackActivity"
+            android:configChanges="orientation|screenSize" />
 
     </application>
 

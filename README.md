@@ -64,6 +64,11 @@ npm run dev
    NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-public-key
    ```
+6. **تنظیم قالب ایمیل کد تایید (ارسال عدد ۶ رقمی بجای لینک):**
+   - در پنل Supabase به **Authentication -> Email Templates -> Magic Link** بروید.
+   - عنوان (Subject) را بگذارید: `کد تایید ورود به واژه‌چین: {{ .Token }}`
+   - محتوای پیش‌فرض Supabase فقط لینک دارد (`{{ .ConfirmationURL }}`). برای اینکه **کد عددی** ارسال شود، محتوای فایل [`supabase/email-templates/magic-link.html`](file:///Users/vahid/Workspace/Personal/wordle-farsi/supabase/email-templates/magic-link.html) را در بخش **Body (HTML)** کپی و ذخیره کنید.
+   - همین کار را برای قالب **Confirm signup** نیز انجام دهید.
 
 ---
 
