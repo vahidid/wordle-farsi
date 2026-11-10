@@ -33,6 +33,22 @@ export const metadata: Metadata = {
   title: "واژه‌چین | Wordle فارسی - بازی حدس کلمات ۵ حرفی",
   description: "بازی حدس کلمات معنادار فارسی. با کیبورد فارسی کلمه را حدس بزنید، رتبه خود را در جدول رده‌بندی ثبت کنید و نتیجه را در اینستاگرام و توییتر به اشتراک بگذارید.",
   keywords: ["wordle", "وردل", "واژه‌چین", "بازی کلمات", "کلمه بازی", "wordle فارسی"],
+  applicationName: "واژه‌چین",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "واژه‌چین",
+  },
 };
 
 export const viewport: Viewport = {

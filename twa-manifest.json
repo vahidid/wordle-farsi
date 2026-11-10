@@ -1,0 +1,52 @@
+{
+  "packageId": "ir.wordlefarsi.twa",
+  "host": "wordle-farsi.vercel.app",
+  "name": "واژه‌چین | Wordle فارسی",
+  "launcherName": "واژه‌چین",
+  "display": "standalone",
+  "themeColor": "#0F172A",
+  "themeColorDark": "#020617",
+  "navigationColor": "#020617",
+  "navigationColorDark": "#020617",
+  "navigationDividerColor": "#1E293B",
+  "navigationDividerColorDark": "#1E293B",
+  "backgroundColor": "#020617",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://wordle-farsi.vercel.app/icons/icon-512.png",
+  "maskableIconUrl": "https://wordle-farsi.vercel.app/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android/keystore/release.keystore",
+    "alias": "wordlefarsi"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://wordle-farsi.vercel.app/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": false,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://wordle-farsi.vercel.app/",
+  "minSdkVersion": 21,
+  "targetSdkVersion": 34,
+  "orientation": "portrait",
+  "fingerprints": [
+    {
+      "value": "94:7B:B1:31:FC:49:36:20:AB:19:A3:31:34:82:5F:52:81:87:C5:E5:1A:3C:AC:F5:AB:DF:7D:AE:BE:D9:9F:0E"
+    }
+  ]
+}

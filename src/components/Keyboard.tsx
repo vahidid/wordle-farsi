@@ -33,6 +33,8 @@ const EN_TO_FA_MAP: Record<string, string> = {
   p: 'ح',
   '[': 'ج',
   ']': 'چ',
+  '{': 'ج',
+  '}': 'چ',
   a: 'ش',
   s: 'س',
   d: 'ی',
@@ -44,7 +46,9 @@ const EN_TO_FA_MAP: Record<string, string> = {
   k: 'ن',
   l: 'م',
   ';': 'ک',
+  ':': 'ک',
   "'": 'گ',
+  '"': 'گ',
   z: 'ظ',
   x: 'ط',
   c: 'ز',
@@ -53,7 +57,10 @@ const EN_TO_FA_MAP: Record<string, string> = {
   n: 'د',
   m: 'پ',
   ',': 'و',
+  '<': 'و',
   C: 'ژ',
+  '\\': 'پ',
+  '|': 'ژ',
 };
 
 export function Keyboard({
@@ -66,6 +73,16 @@ export function Keyboard({
   const handleKeyClick = useCallback(
     (key: string) => {
       if (disabled) return;
+
+      // Haptic feedback for touch devices (TWA / mobile browsers)
+      if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+        try {
+          navigator.vibrate(10);
+        } catch {
+          // ignore vibration errors
+        }
+      }
+
       if (key === 'ENTER') {
         onEnter();
       } else if (key === 'BACKSPACE') {
@@ -121,10 +138,10 @@ export function Keyboard({
   }, [disabled, onEnter, onDelete, onChar]);
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-1.5 sm:px-4 pb-4 select-none" dir="rtl">
+    <div className="w-full max-w-2xl mx-auto px-1 sm:px-3 pb-3 sm:pb-4 select-none" dir="ltr">
       <div className="flex flex-col gap-1.5 sm:gap-2">
         {KEYBOARD_ROWS.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex justify-center gap-1 sm:gap-1.5">
+          <div key={rowIndex} className="flex justify-center gap-1 sm:gap-1.5 w-full">
             {row.map((key) => {
               if (key === 'ENTER') {
                 return (
@@ -133,10 +150,11 @@ export function Keyboard({
                     type="button"
                     onClick={() => handleKeyClick('ENTER')}
                     disabled={disabled}
-                    className="flex-1 max-w-[68px] sm:max-w-[78px] h-12 sm:h-14 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1 shadow-md shadow-emerald-950/40 active:scale-95 transition-all cursor-pointer"
+                    className="flex-[1.35] sm:flex-[1.5] max-w-[76px] h-[50px] sm:h-[56px] rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1 shadow-md shadow-emerald-950/40 active:scale-95 transition-all cursor-pointer touch-manipulation select-none"
+                    aria-label="ثبت کلمه"
                   >
-                    <span>ثبت</span>
-                    <CornerDownLeft className="w-3.5 h-3.5" />
+                    <span className="leading-none pt-0.5 font-sans">ثبت</span>
+                    <CornerDownLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
                   </button>
                 );
               }
@@ -148,10 +166,10 @@ export function Keyboard({
                     type="button"
                     onClick={() => handleKeyClick('BACKSPACE')}
                     disabled={disabled}
-                    className="flex-1 max-w-[54px] sm:max-w-[64px] h-12 sm:h-14 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer"
+                    className="flex-[1.2] sm:flex-[1.3] max-w-[62px] h-[50px] sm:h-[56px] rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700/80 flex items-center justify-center shadow-md active:scale-95 transition-all cursor-pointer touch-manipulation select-none"
                     aria-label="پاک کردن"
                   >
-                    <Delete className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Delete className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                   </button>
                 );
               }
@@ -174,9 +192,9 @@ export function Keyboard({
                   type="button"
                   onClick={() => handleKeyClick(key)}
                   disabled={disabled}
-                  className={`flex-1 min-w-[24px] sm:min-w-[34px] max-w-[44px] h-12 sm:h-14 rounded-lg text-base sm:text-lg font-semibold flex items-center justify-center transition-all duration-100 active:scale-95 cursor-pointer ${keyStyle}`}
+                  className={`flex-1 h-[50px] sm:h-[56px] rounded-lg text-lg sm:text-xl font-bold font-sans flex items-center justify-center transition-all duration-75 active:scale-95 cursor-pointer touch-manipulation select-none ${keyStyle}`}
                 >
-                  <span className="pt-0.5">{key}</span>
+                  <span className="leading-none pt-0.5">{key}</span>
                 </button>
               );
             })}

@@ -1,0 +1,10 @@
+<resources>
+    <color name="backgroundColor">#020617</color>
+    <color name="statusBarColor">#0F172A</color>
+    <color name="statusBarColorDark">#020617</color>
+    <color name="navigationBarColor">#020617</color>
+    <color name="navigationBarColorDark">#020617</color>
+    <color name="colorPrimary">#10B981</color>
+    <color name="colorPrimaryDark">#059669</color>
+    <color name="colorAccent">#F59E0B</color>
+</resources>

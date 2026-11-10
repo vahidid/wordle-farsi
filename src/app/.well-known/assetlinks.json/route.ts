@@ -1,0 +1,23 @@
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const assetLinks = [
+    {
+      relation: ['delegate_permission/common.handle_all_urls'],
+      target: {
+        namespace: 'android_app',
+        package_name: 'ir.wordlefarsi.twa',
+        sha256_cert_fingerprints: [
+          '94:7B:B1:31:FC:49:36:20:AB:19:A3:31:34:82:5F:52:81:87:C5:E5:1A:3C:AC:F5:AB:DF:7D:AE:BE:D9:9F:0E',
+        ],
+      },
+    },
+  ];
+
+  return NextResponse.json(assetLinks, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=86400, stale-while-revalidate=43200',
+    },
+  });
+}

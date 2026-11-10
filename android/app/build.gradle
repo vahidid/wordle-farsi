@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+}
+
+def twaHost = project.hasProperty('twaHost') ? project.property('twaHost') : 'wordle-farsi.vercel.app'
+def twaDefaultUrl = "https://${twaHost}"
+
+android {
+    namespace 'ir.wordlefarsi.twa'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "ir.wordlefarsi.twa"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+            hostName: twaHost,
+            defaultUrl: twaDefaultUrl,
+            launcherName: "@string/app_name",
+            assetStatements: "[{\"relation\": [\"delegate_permission/common.handle_all_urls\"], \"target\": {\"namespace\": \"android_app\", \"package_name\": \"ir.wordlefarsi.twa\", \"sha256_cert_fingerprints\": [\"*\"]}}]"
+        ]
+    }
+
+    signingConfigs {
+        release {
+            def keystoreFile = file("../keystore/release.keystore")
+            if (keystoreFile.exists()) {
+                storeFile keystoreFile
+                storePassword System.getenv("KEYSTORE_PASSWORD") ?: "wordlefarsi123"
+                keyAlias System.getenv("KEY_ALIAS") ?: "wordlefarsi"
+                keyPassword System.getenv("KEY_PASSWORD") ?: "wordlefarsi123"
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            def keystoreFile = file("../keystore/release.keystore")
+            if (keystoreFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+}
