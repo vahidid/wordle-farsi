@@ -8,5 +8,14 @@
         "54:8C:B3:98:D5:2D:D4:C9:B5:21:AE:12:BA:D6:AF:ED:51:48:90:1C:F8:E9:24:09:75:91:FD:39:2F:06:37:B7"
       ]
     }
+  },
+  {
+    "relation": [
+      "check_validation"
+    ],
+    "target": {
+      "namespace": "cafebazaar_twa",
+      "package_name": "ir.wordlefarsi.twa"
+    }
   }
 ]

@@ -12,6 +12,15 @@ export async function GET() {
         ],
       },
     },
+    {
+      "relation": [
+        "check_validation"
+      ],
+      "target": {
+        "namespace": "cafebazaar_twa",
+        "package_name": "ir.wordlefarsi.twa"
+      }
+    }
   ];
 
   return NextResponse.json(assetLinks, {
