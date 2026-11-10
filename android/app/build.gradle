@@ -29,12 +29,19 @@ android {
 
     signingConfigs {
         release {
-            def keystoreFile = file("../keystore/release.keystore")
+            def keyPropsFile = rootProject.file("key.properties")
+            def keyProperties = new Properties()
+            if (keyPropsFile.exists()) {
+                keyProperties.load(new FileInputStream(keyPropsFile))
+            }
+
+            def keystorePath = System.getenv("KEYSTORE_PATH") ?: keyProperties['storeFile'] ?: "../keystore/release.keystore"
+            def keystoreFile = file(keystorePath)
             if (keystoreFile.exists()) {
                 storeFile keystoreFile
-                storePassword System.getenv("KEYSTORE_PASSWORD") ?: "wordlefarsi123"
-                keyAlias System.getenv("KEY_ALIAS") ?: "wordlefarsi"
-                keyPassword System.getenv("KEY_PASSWORD") ?: "wordlefarsi123"
+                storePassword System.getenv("KEYSTORE_PASSWORD") ?: keyProperties['storePassword']
+                keyAlias System.getenv("KEY_ALIAS") ?: keyProperties['keyAlias'] ?: "wordlefarsi"
+                keyPassword System.getenv("KEY_PASSWORD") ?: keyProperties['keyPassword']
             }
         }
     }

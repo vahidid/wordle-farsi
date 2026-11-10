@@ -41,7 +41,7 @@
 ### گام ۲.۲: بررسی Digital Asset Links
 برای اینکه برنامه در گوشی کاربران کاملاً تمام‌صفحه باشد و نوار آدرس مرورگر ظاهر نشود، دامنه شما باید اثر انگشت SHA-256 فایل keystore را تایید کند:
 - اثر انگشت فعلی کلید ایجاد شده:
-  `94:7B:B1:31:FC:49:36:20:AB:19:A3:31:34:82:5F:52:81:87:C5:E5:1A:3C:AC:F5:AB:DF:7D:AE:BE:D9:9F:0E`
+  `54:8C:B3:98:D5:2D:D4:C9:B5:21:AE:12:BA:D6:AF:ED:51:48:90:1C:F8:E9:24:09:75:91:FD:39:2F:06:37:B7`
 - این اثر انگشت قبلاً در فایل‌های زیر قرار داده شده است:
   - [public/.well-known/assetlinks.json](file:///Users/vahid/Workspace/Personal/wordle-farsi/public/.well-known/assetlinks.json)
   - [src/app/.well-known/assetlinks.json/route.ts](file:///Users/vahid/Workspace/Personal/wordle-farsi/src/app/.well-known/assetlinks.json/route.ts)

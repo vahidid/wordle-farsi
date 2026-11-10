@@ -8,7 +8,7 @@ export async function GET() {
         namespace: 'android_app',
         package_name: 'ir.wordlefarsi.twa',
         sha256_cert_fingerprints: [
-          '94:7B:B1:31:FC:49:36:20:AB:19:A3:31:34:82:5F:52:81:87:C5:E5:1A:3C:AC:F5:AB:DF:7D:AE:BE:D9:9F:0E',
+          '54:8C:B3:98:D5:2D:D4:C9:B5:21:AE:12:BA:D6:AF:ED:51:48:90:1C:F8:E9:24:09:75:91:FD:39:2F:06:37:B7',
         ],
       },
     },

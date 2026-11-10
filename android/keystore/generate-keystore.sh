@@ -3,9 +3,23 @@ set -e
 
 KEYSTORE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 KEYSTORE_FILE="$KEYSTORE_DIR/release.keystore"
-ALIAS="wordlefarsi"
-STORE_PASS="${KEYSTORE_PASSWORD:-wordlefarsi123}"
-KEY_PASS="${KEY_PASSWORD:-wordlefarsi123}"
+KEY_PROPS="$KEYSTORE_DIR/../key.properties"
+
+# Read properties from key.properties if available
+if [ -f "$KEY_PROPS" ]; then
+    STORE_PASS="${KEYSTORE_PASSWORD:-$(grep '^storePassword=' "$KEY_PROPS" | cut -d'=' -f2-)}"
+    KEY_PASS="${KEY_PASSWORD:-$(grep '^keyPassword=' "$KEY_PROPS" | cut -d'=' -f2-)}"
+    ALIAS="${KEY_ALIAS:-$(grep '^keyAlias=' "$KEY_PROPS" | cut -d'=' -f2-)}"
+else
+    STORE_PASS="${KEYSTORE_PASSWORD:-}"
+    KEY_PASS="${KEY_PASSWORD:-}"
+    ALIAS="${KEY_ALIAS:-wordlefarsi}"
+fi
+
+if [ -z "$STORE_PASS" ] || [ -z "$KEY_PASS" ]; then
+    echo "ERROR: Password not found in environment or android/key.properties"
+    exit 1
+fi
 
 echo "=================================================="
 echo "    Wordle Farsi - TWA Keystore Generator"
