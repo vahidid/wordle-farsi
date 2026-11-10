@@ -8,6 +8,7 @@ def twaDefaultUrl = "https://${twaHost}"
 android {
     namespace 'ir.wordlefarsi.twa'
     compileSdk 34
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
         applicationId "ir.wordlefarsi.twa"
@@ -40,8 +41,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             def keystoreFile = file("../keystore/release.keystore")
             if (keystoreFile.exists()) {
@@ -63,4 +64,13 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
 }
